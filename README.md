@@ -33,3 +33,4 @@ The aim of the exercise is to understand and use Redux with vanilla JavaScript
 1. [Getting Started](https://redux.js.org/introduction/getting-started)
 2. [Core Concept](https://redux.js.org/introduction/core-concepts)
 3. [Three Principles](https://redux.js.org/introduction/three-principles)
+4. [javascript](www.javascript.info)
