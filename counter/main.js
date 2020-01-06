@@ -1,7 +1,8 @@
 let h1 = document.querySelector("h1");
-let Increment = document.querySelector(".inc");
-let Decrement = document.querySelector(".dec");
+let Inc = document.querySelector(".inc");
+let Dec = document.querySelector(".dec");
 let Reset = document.querySelector(".reset");
+let btn5 = document.querySelector(".btn5");
 
 //creating a store using redux
 let store = Redux.createStore(reducer);
@@ -15,7 +16,7 @@ function reducer(store = 0, action) {
         alert("you are not allowed to do this");
         return store;
       } else {
-        return (store = store + 1);
+        return store + action.payload;
       }
     case "dec":
       if (store <= -1) {
@@ -23,7 +24,7 @@ function reducer(store = 0, action) {
         alert("press increment");
         return store;
       } else {
-        return (store = store - 1);
+        return store - 1;
       }
     case "reset":
       return (store = 0);
@@ -31,18 +32,27 @@ function reducer(store = 0, action) {
       return store;
   }
 }
+var val = 1;
+function Increment(val) {
+  return store.dispatch({ type: "inc", payload: val });
+}
 
-Increment.addEventListener("click", () => {
-  store.dispatch({ type: "inc" });
-  h1.innerText = store.getState();
-});
-Decrement.addEventListener("click", () => {
-  store.dispatch({ type: "dec" });
-  h1.innerText = store.getState();
-});
+Inc.addEventListener("click", () => Increment(val));
+
+function Decrement(val) {
+  return store.dispatch({ type: "dec", payload: val });
+}
+Dec.addEventListener("click", () => Decrement(val));
+
+// Decrement.addEventListener("click", () => {
+//   store.dispatch({ type: "dec" });
+// });
+
 Reset.addEventListener("click", () => {
   store.dispatch({ type: "reset" });
-  h1.innerText = store.getState();
 });
 
 h1.innerText = store.getState();
+store.subscribe(() => {
+  h1.innerText = store.getState();
+});
