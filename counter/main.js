@@ -1,4 +1,5 @@
 let h1 = document.querySelector("h1");
+let p = document.querySelector("p");
 let Inc = document.querySelector(".inc");
 let Dec = document.querySelector(".dec");
 let Reset = document.querySelector(".reset");
@@ -17,14 +18,14 @@ function reducer(store = 0, action) {
   switch (action.type) {
     case "inc":
       //   return (store = store + 1);
-      if (store >= 100) {
+      if (store > 99) {
         alert("you are not allowed to do this");
         return store;
       } else {
         return store + action.payload;
       }
     case "dec":
-      if (store <= -1) {
+      if (store < 1) {
         alert("you cannot go further");
         alert("press increment");
         return store;
@@ -55,9 +56,7 @@ IncBy8.addEventListener("click", () => (val = 8));
 IncBy10.addEventListener("click", () => (val = 10));
 IncBy12.addEventListener("click", () => (val = 12));
 IncBy14.addEventListener("click", () => (val = 14));
-// Decrement.addEventListener("click", () => {
-//   store.dispatch({ type: "dec" });
-// });
+IncBy16.addEventListener("click", () => (val = 16));
 
 Reset.addEventListener("click", () => {
   store.dispatch({ type: "reset" });
@@ -66,4 +65,5 @@ Reset.addEventListener("click", () => {
 h1.innerText = store.getState();
 store.subscribe(() => {
   h1.innerText = store.getState();
+  p.innerText = `value change by ${val}`;
 });
