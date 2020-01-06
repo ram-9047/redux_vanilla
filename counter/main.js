@@ -2,7 +2,12 @@ let h1 = document.querySelector("h1");
 let Inc = document.querySelector(".inc");
 let Dec = document.querySelector(".dec");
 let Reset = document.querySelector(".reset");
-let btn5 = document.querySelector(".btn5");
+let IncBy5 = document.querySelector(".btn5");
+let IncBy8 = document.querySelector(".btn8");
+let IncBy10 = document.querySelector(".btn10");
+let IncBy12 = document.querySelector(".btn12");
+let IncBy14 = document.querySelector(".btn14");
+let IncBy16 = document.querySelector(".btn16");
 
 //creating a store using redux
 let store = Redux.createStore(reducer);
@@ -24,7 +29,7 @@ function reducer(store = 0, action) {
         alert("press increment");
         return store;
       } else {
-        return store - 1;
+        return store - action.payload;
       }
     case "reset":
       return (store = 0);
@@ -42,8 +47,14 @@ Inc.addEventListener("click", () => Increment(val));
 function Decrement(val) {
   return store.dispatch({ type: "dec", payload: val });
 }
+
 Dec.addEventListener("click", () => Decrement(val));
 
+IncBy5.addEventListener("click", () => (val = 5));
+IncBy8.addEventListener("click", () => (val = 8));
+IncBy10.addEventListener("click", () => (val = 10));
+IncBy12.addEventListener("click", () => (val = 12));
+IncBy14.addEventListener("click", () => (val = 14));
 // Decrement.addEventListener("click", () => {
 //   store.dispatch({ type: "dec" });
 // });
